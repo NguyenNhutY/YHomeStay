@@ -1,3 +1,4 @@
+// Faq.jsx
 import React, { memo, useState } from "react";
 import { assets } from "../assets/data.js";
 import Title from "./Title.jsx";
@@ -11,94 +12,85 @@ const Faq = () => {
 
   const faqsData = [
     {
-      question: "Lightning-Fast Booking",
+      question: "Are the homes exactly as shown in photos?",
       answer:
-        "Designed for speed – instant search and seamless property viewing.",
+        "Yes. Every listing is reviewed before going live. What you see is what you stay in — no surprises.",
     },
     {
-      question: "Fully Customizable Homes",
+      question: "How does check-in and check-out work?",
       answer:
-        "Easily change layouts, features, and designs to fit your lifestyle.",
+        "Most homes offer flexible self check-in. Details are shared clearly before arrival so you can arrive at your own pace.",
     },
     {
-      question: "Responsive by Location",
+      question: "Are these places suitable for quiet stays?",
       answer:
-        "Every property is accessible by area – no extra effort required.",
+        "We prioritize privacy and calm surroundings. These homes are best for rest, slow travel, and uninterrupted time.",
     },
     {
-      question: "Real Estate Powered",
+      question: "What if I need to cancel or change my dates?",
       answer:
-        "Backed using trusted property data – no extra agents or steps needed.",
+        "Each home has a clear cancellation policy shown before booking. No hidden rules or fine print.",
     },
     {
-      question: "Smart Home Support",
+      question: "Is support available during my stay?",
       answer:
-        "All houses come ready with modern smart living features included.",
+        "Yes. Our support team is available throughout your stay if you need help with access or urgent matters.",
     },
   ];
 
   return (
-    <section className=' max-padd-container py-20 xl:py-32 mt-20'>
-      <div className='flex flex-col md:flex-row items-start gap-12 lg:gap-20'>
-        {/* LEFT SECTION */}
+    <section className='max-padd-container py-24'>
+      <div className='flex flex-col md:flex-row gap-16'>
+        {/* LEFT */}
         <div className='flex-1 flex flex-col gap-10'>
-          <h2 className='text-3xl md:text-4xl font-bold text-gray-900'>
-            Frequently Asked Questions
+          <h2 className='text-3xl md:text-4xl font-light text-gray-900'>
+            Common questions
           </h2>
 
-          <div className='transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] relative rounded-3xl overflow-hidden shadow-lg'>
+          <div className='relative rounded-3xl overflow-hidden shadow-lg'>
             <img
               src={assets.faq}
-              alt='faq'
-              className='w-full h-full object-cover '
+              alt='quiet stay'
+              className='w-full h-full object-cover'
             />
 
-            <div className='absolute bottom-5 left-5 right-5 bg-white/80 backdrop-blur-lg p-4 rounded-2xl shadow-md flex items-center gap-4'>
-              <img src={assets.signature} alt='signature' width={55} />
-
-              <div className='transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]'>
-                <h5 className='text-lg font-semibold mb-1'>
-                  Trusted Real Estate Experts
-                </h5>
-                <p className='text-sm text-gray-700'>
-                  Trust, clarity, and simplicity are the core of our service.
-                </p>
-              </div>
+            <div className='absolute bottom-5 left-5 right-5 bg-white/80 backdrop-blur p-4 rounded-xl'>
+              <p className='font-medium text-gray-900'>
+                Carefully selected homes
+              </p>
+              <p className='text-sm text-gray-600'>
+                Calm, privacy, and comfort come first
+              </p>
             </div>
           </div>
         </div>
 
-        {/* RIGHT SECTION */}
-        <div className='flex-1 relative'>
+        {/* RIGHT */}
+        <div className='flex-1'>
           <Title
-            title1='Your Trusted Real Estate Partner'
-            title2='Helping You Every Step of the Way'
-            para='From finding the right location to finalizing the deal, we ensure your real estate journey is smooth, efficient, and fulfilling...'
-            titleStyles='text-3xl font-bold mb-4'
+            title1='Before you book'
+            title2='Here’s what most guests ask'
+            para='Clear answers help you choose calmly. If something still feels unclear, we’re always here to help.'
+            titleStyles='text-3xl font-light mb-4'
             paraStyles='text-gray-600 max-w-lg'
           />
 
-          {/* Gradient background */}
-          <div className='absolute inset-0 bg-linear-to-br from-purple-500/10 via-blue-500/10 to-cyan-500/10 rounded-2xl pointer-events-none -z-10' />
-
-          {/* FAQ LIST */}
-          <div className='mt-6 space-y-4'>
+          <div className='mt-8 space-y-4'>
             {faqsData.map((item, idx) => (
               <div
                 key={idx}
-                className='transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] bg-white/80 backdrop-blur-md rounded-xl border border-slate-900/10 shadow-sm p-5 cursor-pointer '
                 onClick={() => toggle(idx)}
+                className='bg-white rounded-xl border border-black/5 p-5 cursor-pointer transition hover:bg-black/[0.02]'
               >
                 <div className='flex items-center justify-between'>
-                  <h3 className='font-semibold text-lg'>{item.question}</h3>
-
-                  <span className='text-xl'>
-                    {openIndex === idx ? "-" : "+"}
+                  <h3 className='font-medium text-gray-900'>{item.question}</h3>
+                  <span className='text-xl text-gray-500'>
+                    {openIndex === idx ? "–" : "+"}
                   </span>
                 </div>
 
                 <div
-                  className={`mt-2 text-gray-600 overflow-hidden transition-all duration-300 ${
+                  className={`mt-2 text-sm text-gray-600 overflow-hidden transition-all ${
                     openIndex === idx ? "max-h-40" : "max-h-0"
                   }`}
                 >

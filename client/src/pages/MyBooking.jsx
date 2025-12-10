@@ -30,7 +30,7 @@ const MyBooking = () => {
           {bookings.map((booking) => (
             <div
               key={booking._id}
-              className='bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-5 hover:shadow-md transition'
+              className='cursor-pointer  duration-300 hover:scale-[1.03] ring-slate-900/5 pr-4 mt-3 ring-1 active:scale-[0.98] bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-5 hover:shadow-md transition'
             >
               {/* Top */}
               <div className='flex gap-4 items-center'>
@@ -43,7 +43,7 @@ const MyBooking = () => {
                   <h3 className='text-lg font-semibold line-clamp-1'>
                     {booking.property.title}
                   </h3>
-                  <p className='flex items-center gap-1 text-sm text-zinc-500 mt-1'>
+                  <p className='flex items-center gap-1 text-sm text-zinc-500 mt-0.5 place-items-baseline'>
                     <img src={assets.pin} alt='' width={14} />
                     {booking.property.address}
                   </p>
@@ -58,7 +58,11 @@ const MyBooking = () => {
               </div>
 
               {/* Middle */}
-              <div className='grid sm:grid-cols-3 gap-4 text-sm'>
+              <div className='grid sm:grid-cols-4 gap-4 text-sm item-start lg:items-center justify-between'>
+                <div className='gap-2 gap-x-4 '>
+                  <p className='text-zinc-400'>Booking ID:</p>
+                  <p className='font-medium'>{booking._id}</p>
+                </div>
                 <div>
                   <p className='text-zinc-400'>Guests</p>
                   <p className='font-medium'>{booking.guests}</p>
@@ -95,7 +99,7 @@ const MyBooking = () => {
                 </div>
 
                 {!booking.isPaid && (
-                  <button className='px-4 py-1.5 rounded-md text-sm font-medium bg-black text-white hover:bg-zinc-800 transition'>
+                  <button className='cursor-pointer duration-300 hover:scale-[1.03] active:scale-[0.98] px-4 py-1.5 rounded-md text-sm font-medium bg-black text-white hover:bg-zinc-800 transition'>
                     Pay now
                   </button>
                 )}

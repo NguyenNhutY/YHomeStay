@@ -63,9 +63,11 @@ import blog5 from "./blogs/blog5.jpg";
 import blog6 from "./blogs/blog6.jpg";
 import blog7 from "./blogs/blog7.jpg";
 import blog8 from "./blogs/blog8.jpg";
+import banner from "./banner.jpg";
 
 export const assets = {
   logoImg,
+  banner,
   search,
   user,
   menu,
