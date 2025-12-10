@@ -1,0 +1,25 @@
+🚀 Setup Instructions (Quick & Easy):
+
+1. Extract & Open  
+   Download and extract the source code folder. Open it in your code editor.
+
+2. Add Assets  
+   Download the images/assets from the YouTube tutorial description and place them in the folder of assets in client folder
+   Note: images are provided only for testing/educational/demo purposes. Please do not share or redistribute them.   For real projects, download your own free or properly licensed assets    directly from the original sources listed in the description of youtube video
+
+3. Configure Environment  
+   - Create free accounts on MongoDB Clerk Stripe Brevo and Cloudinary  
+   - Copy and paste your Clerk keys in .env files 
+   - Copy your MongoDB connection string into backend/.env  
+   - Copy your Stripe and Cloudinary API keys and credentials and paste in backend/.env
+   
+4. Install Dependencies  
+   Open the Client and Server folders in the terminal and run:  
+   "npm install"
+
+5. Run the Project  
+   Start the server first, then the client using terminal commands.
+
+6. Follow Tutorial  
+   Watch the tutorial step-by-step to understand and customize the project.  
+   💬 Need help? I'm just a message away.
