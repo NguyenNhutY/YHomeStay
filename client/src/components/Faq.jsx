@@ -49,7 +49,7 @@ const Faq = () => {
 
           <div className='relative rounded-3xl overflow-hidden shadow-lg'>
             <img
-              src={assets.faq}
+              src={assets.faq1}
               alt='quiet stay'
               className='w-full h-full object-cover'
             />

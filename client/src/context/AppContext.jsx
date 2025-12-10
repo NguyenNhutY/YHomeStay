@@ -12,12 +12,14 @@ export const AppContextProvider = ({ children }) => {
 
   // Không dùng useEffect, load trực tiếp
   const [properties] = useState(dummyProperties);
-
+  const [showAgencyReq, setShowAgencyReq] = useState(false);
   const value = {
     properties,
     navigate,
     user,
     currency,
+    setShowAgencyReq,
+    showAgencyReq,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

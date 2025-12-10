@@ -64,8 +64,12 @@ import blog6 from "./blogs/blog6.jpg";
 import blog7 from "./blogs/blog7.jpg";
 import blog8 from "./blogs/blog8.jpg";
 import banner from "./banner.jpg";
+import faq1 from "./faq1.jpg";
+import createPrp1 from "./createPrp1.jpg";
 
 export const assets = {
+  createPrp1,
+  faq1,
   logoImg,
   banner,
   search,

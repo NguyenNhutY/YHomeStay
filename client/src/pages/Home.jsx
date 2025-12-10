@@ -8,22 +8,17 @@ import Cta from "../components/Cta";
 import Contact from "../components/Contact";
 import Testimonial from "../components/Testimonial";
 import Areas from "../components/Areas";
-import AgencyReq from "../components/AgencyReq";
 import WhyChooseUs from "../components/WhyChoose";
 import HowItWorks from "../components/HowItWorks";
-import Stats from "../components/Stats";
 
 const Home = () => {
   return (
     <div className='min-h-screen bg-linear-to-br from-[#fffbee] to-white'>
       <Hero />
       <HowItWorks />
-
       <Areas />
       <WhyChooseUs />
       <FeatureProperties />
-
-      <AgencyReq />
 
       <Banner />
       <Testimonial />

@@ -1,52 +1,143 @@
-import React, { memo } from "react";
-import { assets } from "../assets/data";
-import { Link } from "react-router-dom";
+import React, { memo, useState } from "react";
+import { useAppContext } from "../context/AppContext";
+import { cities, assets } from "../assets/data";
 
 const AgencyReq = () => {
+  const { setShowAgencyReq } = useAppContext();
+
+  const [form, setForm] = useState({
+    name: "",
+    contact: "",
+    email: "",
+    address: "",
+    city: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // TODO: gọi API ở đây
+    console.log("Agency register:", form);
+
+    setShowAgencyReq(true);
+  };
+
   return (
-    <section className='max-padd-container py-20 xl:py-28'>
-      <div className='relative overflow-hidden rounded-3xl bg-linear-to-br from-[#0f172a] via-[#020617] to-[#020617] text-white'>
-        {/* Background glow */}
-        <div className='absolute -top-24 -right-24 w-96 h-96 bg-amber-400/20 blur-3xl rounded-full' />
-        <div className='absolute -bottom-24 -left-24 w-96 h-96 bg-blue-400/10 blur-3xl rounded-full' />
+    <div
+      onClick={() => setShowAgencyReq(true)}
+      className='fixed inset-0 z-50 flex items-center justify-center bg-black/50'
+    >
+      <form
+        onClick={(e) => e.stopPropagation()}
+        onSubmit={handleSubmit}
+        className='flex bg-white rounded-xl max-w-4xl w-full max-md:mx-2 relative overflow-hidden'
+      >
+        {/* Close button */}
+        <button
+          type='button'
+          onClick={() => setShowAgencyReq(true)}
+          className='transition cursor-pointer duration-300 hover:scale-[1.03] active:scale-[0.98] absolute top-4 right-4 z-10 text-gray-600 hover:text-black text-xl'
+        >
+          ✕
+        </button>
 
-        <div className='relative z-10 grid md:grid-cols-2 gap-16 items-center p-10 md:p-16'>
-          {/* LEFT */}
-          <div>
-            <span className='inline-block mb-4 px-4 py-1 text-sm rounded-full bg-white/10 border border-white/10'>
-              For Hosts & Agencies
-            </span>
+        {/* Image */}
+        <div className='w-1/2 hidden md:block'>
+          <img
+            src={assets.createPrp1}
+            alt='Register agency'
+            className='w-full h-full object-cover'
+          />
+        </div>
 
-            <h2 className='text-3xl md:text-4xl font-bold leading-tight mb-6'>
-              Turn Your Property <br /> into a Profitable Stay
-            </h2>
+        {/* Content */}
+        <div className='flex flex-col md:w-1/2 p-8 md:p-10'>
+          <h3 className='h4 mb-6'>Register Agency</h3>
 
-            <p className='text-gray-300 max-w-xl mb-8'>
-              Join our curated homestay network. We handle visibility, bookings,
-              and trusted guests — you stay in control and earn consistently.
-            </p>
-          </div>
+          <div className='flex flex-col gap-4'>
+            <div>
+              <label className='medium-14'>Agency Name</label>
+              <input
+                name='name'
+                value={form.name}
+                onChange={handleChange}
+                required
+                placeholder='Your agency name'
+                className='transition cursor-pointer duration-300 hover:scale-[1.03] active:scale-[0.98] regular-14 border border-slate-300 rounded-lg w-full px-3 py-1.5 mt-1 outline-none focus:border-black'
+              />
+            </div>
 
-          {/* RIGHT */}
-          <div className='grid grid-cols-2 gap-6'>
-            {[
-              { value: "500+", label: "Verified Hosts" },
-              { value: "12", label: "Cities Covered" },
-              { value: "4.9★", label: "Average Guest Rating" },
-              { value: "24/7", label: "Host Support" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className='rounded-2xl bg-white/10 backdrop-blur-md p-6 border border-white/10'
+            <div>
+              <label className='medium-14'>Contact</label>
+              <input
+                name='contact'
+                value={form.contact}
+                onChange={handleChange}
+                required
+                placeholder='Phone number'
+                className='transition cursor-pointer duration-300 hover:scale-[1.03] active:scale-[0.98] regular-14 border border-slate-300 rounded-lg w-full px-3 py-1.5 mt-1 outline-none focus:border-black'
+              />
+            </div>
+
+            <div>
+              <label className='medium-14'>Email</label>
+              <input
+                type='email'
+                name='email'
+                value={form.email}
+                onChange={handleChange}
+                required
+                placeholder='Email address'
+                className='transition cursor-pointer duration-300 hover:scale-[1.03] active:scale-[0.98] regular-14 border border-slate-300 rounded-lg w-full px-3 py-1.5 mt-1 outline-none focus:border-black'
+              />
+            </div>
+
+            <div>
+              <label className='medium-14'>Address</label>
+              <input
+                name='address'
+                value={form.address}
+                onChange={handleChange}
+                required
+                placeholder='Agency address'
+                className='transition cursor-pointer duration-300 hover:scale-[1.03] active:scale-[0.98] regular-14 border border-slate-300 rounded-lg w-full px-3 py-1.5 mt-1 outline-none focus:border-black'
+              />
+            </div>
+
+            <div className='max-w-60 '>
+              <label className='medium-14'>City</label>
+              <select
+                name='city'
+                value={form.city}
+                onChange={handleChange}
+                required
+                className='transition cursor-pointer duration-300 hover:scale-[1.03] active:scale-[0.98] regular-14 border border-slate-300 rounded-lg w-full px-3 py-1.5 mt-1 outline-none focus:border-black'
               >
-                <p className='text-2xl font-bold'>{item.value}</p>
-                <p className='text-sm text-gray-300 mt-1'>{item.label}</p>
-              </div>
-            ))}
+                <option value=''>Select city</option>
+                {cities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button
+              type='submit'
+              onClick={() => setShowAgencyReq(true)}
+              className='cursor-pointer duration-300 hover:scale-[1.03] active:scale-[0.98] mt-6 w-full bg-dark text-white py-2 rounded-lg hover:opacity-90 transition bg-black'
+            >
+              Submit Request
+            </button>
           </div>
         </div>
-      </div>
-    </section>
+      </form>
+    </div>
   );
 };
 

@@ -25,21 +25,26 @@ import ScrollToTop from "./components/ScrollToTop";
 import Property from "./pages/PropertyDetail";
 import AreasDetail from "./pages/AreaDetail.jsx";
 import MyBooking from "./pages/MyBooking.jsx";
+import { useAppContext } from "./context/AppContext.jsx";
+import AgencyReq from "./components/AgencyReq.jsx";
+import Sidebar from "./pages/Sidebar.jsx";
 
 const App = () => {
+  const { showAgencyReq } = useAppContext();
   return (
     <>
       <Header />
       <main className='min-h-screen'>
         <ScrollToTop />
         <Chatbot />
-
         <BackToTop />
+        {showAgencyReq && <AgencyReq />}
+
         {/* đặt ở đây để scroll mỗi lần đổi route */}
         <Routes>
           <Route path='/area/:name' element={<AreasDetail />} />
           <Route path='/my-bookings' element={<MyBooking />} />
-
+          <Route path='/owner' element={<Sidebar />} />
           <Route path='/500' element={<ServerError />} />
           <Route path='/help-center' element={<Support />} />
           <Route path='/careers' element={<Careers />} />
@@ -56,6 +61,7 @@ const App = () => {
           <Route path='/refund-policy' element={<Refund />} />
           <Route path='/terms' element={<TermService />} />
           <Route path='*' element={<Error />} />
+          <Route index element={<Dashboard />} />
         </Routes>
       </main>
 
