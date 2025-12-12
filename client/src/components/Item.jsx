@@ -1,7 +1,6 @@
-import React, { createContext, memo } from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import assets from "../assets/data";
-import { useAppContext } from "../context/AppContext";
 
 const Item = ({ property, currency }) => {
   const { images, title, price, propertyType, facilities, area, description } =

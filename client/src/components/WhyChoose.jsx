@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import { assets } from "../assets/data";
 
 const WhyChooseUs = () => {
   return (

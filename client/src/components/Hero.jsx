@@ -1,6 +1,6 @@
 // Hero.jsx
 import React, { memo } from "react";
-import assets from "../assets/data.js";
+
 import { cities } from "../assets/data.js";
 import { Link } from "react-router-dom";
 
@@ -30,7 +30,7 @@ const Hero = () => {
       </div>
 
       {/* SEARCH FORM – giữ nguyên UX */}
-      <form className='absolute left-1/2 -translate-x-1/2 bottom-[-48px] w-full max-w-4xl bg-white rounded-2xl ring-1 ring-black/5 px-6 py-4 grid grid-cols-1 md:grid-cols-5 gap-4'>
+      <form className='absolute left-1/2 -translate-x-1/2 bottom-12 w-full max-w-4xl bg-white rounded-2xl ring-1 ring-black/5 px-6 py-4 grid grid-cols-1 md:grid-cols-5 gap-4'>
         {/* Check in */}
         <div>
           <label className='text-sm text-gray-500'>Check in</label>

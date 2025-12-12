@@ -74,7 +74,7 @@ const Listing = () => {
   }, [properties, sortBy, selectedTypes, selectedPrices]);
 
   return (
-    <div className='bg-gradient-to-r from-[#fffbee] to-white py-28'>
+    <div className='bg-linear-to-r from-[#fffbee] to-white py-28'>
       <div className='max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-10'>
         {/* ===== FILTER PANEL ===== */}
         <aside className='w-full lg:w-72 shrink-0 bg-white rounded-2xl p-6 shadow-md'>

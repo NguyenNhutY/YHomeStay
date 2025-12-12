@@ -9,6 +9,7 @@ export const AppContextProvider = ({ children }) => {
   const { user } = useUser();
   const currency = import.meta.env.VITE_CURRENCY;
   const navigate = useNavigate();
+  const [isOwner, setIsOwner] = useState(true);
 
   // Không dùng useEffect, load trực tiếp
   const [properties] = useState(dummyProperties);
@@ -20,6 +21,8 @@ export const AppContextProvider = ({ children }) => {
     currency,
     setShowAgencyReq,
     showAgencyReq,
+    isOwner,
+    setIsOwner,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

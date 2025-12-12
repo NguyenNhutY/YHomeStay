@@ -80,7 +80,7 @@ const Faq = () => {
               <div
                 key={idx}
                 onClick={() => toggle(idx)}
-                className='bg-white rounded-xl border border-black/5 p-5 cursor-pointer transition hover:bg-black/[0.02]'
+                className='bg-white rounded-xl border border-black/5 p-5 cursor-pointer transition hover:bg-black/2'
               >
                 <div className='flex items-center justify-between'>
                   <h3 className='font-medium text-gray-900'>{item.question}</h3>

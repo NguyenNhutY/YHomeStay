@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { assets } from "../assets/data.js";
 import { Link } from "react-router-dom";
+import TrustedBrand from "./TrustedBrand.jsx";
 
 const Footer = ({ active }) => {
   return (
@@ -111,14 +112,14 @@ const Footer = ({ active }) => {
 
       <hr className='border-gray-300 mt-8' />
 
-      <div className='mt-8 flex flex-col md:flex-row gap-2 items-center justify-between py-5 text-sm text-gray-500'>
+      <div className='flex flex-col md:flex-row gap-2 items-center justify-between py-5 text-sm text-gray-500'>
         <p>
           © {new Date().getFullYear()}{" "}
           <span className='font-semibold'>YHomestay</span>. All rights reserved.
           (+84) 987 6542 321
         </p>
         <ul className='flex items-center gap-4'>
-          {["Privacy", "Terms", "Sitemap"].map((item) => (
+          {["Privacy", "Terms"].map((item) => (
             <li key={item}>
               <Link
                 className='transition-transform duration-300 hover:scale-105 active:scale-95 text-gray-500 hover:text-secondary'
@@ -129,6 +130,9 @@ const Footer = ({ active }) => {
             </li>
           ))}
         </ul>
+      </div>
+      <div className=' flex flex-col md:flex-row gap-2 items-center justify-between py-5 text-sm text-gray-500'>
+        <TrustedBrand />
       </div>
     </footer>
   );

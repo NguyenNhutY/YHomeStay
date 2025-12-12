@@ -144,7 +144,7 @@ const PropertyDetail = () => {
                 />
               </div>
 
-              <button className='cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95 w-full mt-4 bg-secondary text-white py-3 rounded-full hover:opacity-90 transition'>
+              <button className='cursor-pointer duration-300 hover:scale-105 active:scale-95 w-full mt-4 bg-secondary text-white py-3 rounded-full hover:opacity-90 transition'>
                 Search Availability
               </button>
             </form>

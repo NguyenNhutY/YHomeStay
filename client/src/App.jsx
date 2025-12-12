@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
@@ -27,9 +27,14 @@ import AreasDetail from "./pages/AreaDetail.jsx";
 import MyBooking from "./pages/MyBooking.jsx";
 import { useAppContext } from "./context/AppContext.jsx";
 import AgencyReq from "./components/AgencyReq.jsx";
-import Sidebar from "./pages/Sidebar.jsx";
+import Sidebar from "./components/owner/Sidebar.jsx";
+import AddProperty from "./pages/owner/AddProperty";
+import ListProperty from "./pages/owner/ListProperty.jsx";
+import Dashboard from "./pages/owner/Dashboard.jsx";
 
 const App = () => {
+  const location = useLocation();
+  const isOwnerPath = location.pathname.includes("owner");
   const { showAgencyReq } = useAppContext();
   return (
     <>
@@ -38,13 +43,14 @@ const App = () => {
         <ScrollToTop />
         <Chatbot />
         <BackToTop />
+        {!isOwnerPath && <Header />}
         {showAgencyReq && <AgencyReq />}
 
         {/* đặt ở đây để scroll mỗi lần đổi route */}
         <Routes>
           <Route path='/area/:name' element={<AreasDetail />} />
           <Route path='/my-bookings' element={<MyBooking />} />
-          <Route path='/owner' element={<Sidebar />} />
+
           <Route path='/500' element={<ServerError />} />
           <Route path='/help-center' element={<Support />} />
           <Route path='/careers' element={<Careers />} />
@@ -61,11 +67,14 @@ const App = () => {
           <Route path='/refund-policy' element={<Refund />} />
           <Route path='/terms' element={<TermService />} />
           <Route path='*' element={<Error />} />
-          <Route index element={<Dashboard />} />
+          <Route path='/owner' element={<Sidebar />}>
+            <Route index element={<Dashboard />} />
+            <Route path='/owner/add-property' element={<AddProperty />} />
+            <Route path='/owner/list-property' element={<ListProperty />} />
+          </Route>
         </Routes>
+        {!isOwnerPath && <Footer />}
       </main>
-
-      <Footer />
     </>
   );
 };

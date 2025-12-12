@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 const Navbar = ({ active, setMenuOpened, containerStyles }) => {
   const navLinks = [
     { path: "/", title: "Home" },
-    { path: "/blog", title: "Blog" },
     { path: "/listing", title: "Listing" },
+    { path: "/blog", title: "Blog" },
   ];
 
   return (
