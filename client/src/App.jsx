@@ -29,9 +29,15 @@ import { useAppContext } from "./context/AppContext.jsx";
 import AgencyReq from "./components/AgencyReq.jsx";
 
 import Sidebar from "./components/owner/Sidebar.jsx";
-import AddProperty from "./pages/owner/AddProperty";
-import ListProperty from "./pages/owner/ListProperty.jsx";
+import Add from "./pages/owner/Add.jsx";
+import List from "./pages/owner/List.jsx";
 import Dashboard from "./pages/owner/Dashboard.jsx";
+import Edit from "./pages/owner/Edit.jsx";
+import Inbox from "./pages/owner/Inbox.jsx";
+import Analytics from "./pages/owner/Analytics.jsx";
+import Staff from "./pages/owner/Staff.jsx";
+import Reviews from "./pages/owner/Reviews.jsx";
+import Calendar from "./pages/owner/Calendar.jsx";
 
 const App = () => {
   const location = useLocation();
@@ -74,8 +80,14 @@ const App = () => {
           {/* OWNER ROUTES */}
           <Route path='/owner' element={<Sidebar />}>
             <Route index element={<Dashboard />} />
-            <Route path='/owner/add-property' element={<AddProperty />} />
-            <Route path='/owner/list-property' element={<ListProperty />} />
+            <Route path='/owner/add' element={<Add />} />
+            <Route path='/owner/:id/edit' element={<Edit />} />
+            <Route path='/owner/list' element={<List />} />
+            <Route path='/owner/inbox' element={<Inbox />} />
+            <Route path='/owner/analytics' element={<Analytics />} />
+            <Route path='/owner/staff' element={<Staff />} />
+            <Route path='/owner/reviews' element={<Reviews />} />
+            <Route path='/owner/calendar' element={<Calendar />} />
           </Route>
 
           <Route path='*' element={<Error />} />

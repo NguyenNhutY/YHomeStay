@@ -10,11 +10,17 @@ const Sidebar = () => {
   const navItems = [
     { path: "/owner", label: "Dashboard", icon: assets.dashboard },
     {
-      path: "/owner/add-property",
-      label: "Add Property",
+      path: "/owner/add",
+      label: "Add ",
       icon: assets.housePlus,
     },
-    { path: "/owner/list-property", label: "List Property", icon: assets.list },
+    { path: "/owner/list", label: "List ", icon: assets.list },
+    { path: "/owner/inbox", label: "Inbox", icon: assets.list },
+    { path: "/owner/analytics", label: "Analytics", icon: assets.list },
+    { path: "/owner/staff", label: "Staff", icon: assets.list },
+    { path: "/owner/reviews", label: "Reviews", icon: assets.list },
+
+    { path: "/owner/calendar", label: "Calendar", icon: assets.list },
   ];
 
   useEffect(() => {
@@ -22,52 +28,57 @@ const Sidebar = () => {
   }, [isOwner]);
 
   return (
-    <div className='flex h-screen bg-neutral-100 bg-linear-to-r from [#fffbee] to-white'>
-      <div className='mx-auto max-w-[1440px] flex flex-col md:flex-row'>
-        <div className='w-64 bg-white shadow-xl max-md:flexCenter sm:m-3 md:mid-w-[20%] md:mid-h-[97vh] rounded-xl justify-between border-r px-6 py-8 flex flex-col gap-10 mx-auto max-w[1440px]  md:flex-row'>
-          <div className='flex items-center j flex-col bg-white-col md:pt-5'>
-            <div className='flex flex-1 p-3 lg:pl-8'>
-              <Link to='/owner'>
-                <img src={assets.logoImg} className='h-10' />
-              </Link>
-            </div>
-            <div className='md:hidden flex items-center gap-3 md:bg-primary rounded-b-xl p-2 pl-5 lg:pl-10 md:mt-10'>
-              <UserButton
-                appearance={{
-                  elements: {
-                    userButtonAvatarBox: "w-[42px] h-[42px]",
-                  },
-                }}
-              />
-            </div>
-          </div>
-
-          <nav className='flex flex-col md:gap-4 gap-y-8 md:mt-4'>
-            {navItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className='  flex items-center gap-3 text-neutral-700 hover:text-black hover:bg-neutral-100 px-3 py-2 rounded-xl transition'
-              >
-                <img src={item.icon} className='w-5 h-5 opacity-70' />
-                <span>{item.label}</span>
-              </NavLink>
-            ))}
-          </nav>
+    <div className='flex h-screen bg-neutral-50'>
+      {/* Sidebar */}
+      <aside className='w-64 bg-white border-r shadow-sm flex flex-col'>
+        {/* Logo */}
+        <div className='h-16 flex items-center px-6 border-b'>
+          <Link to='/owner'>
+            <img src={assets.logoImg} className='h-8' />
+          </Link>
         </div>
-      </div>
-      <div className='md:hidden flex items-center gap-3 md:bg-primary rounded-b-xl p-2 pl-5 lg:pl-10 md:mt-10'>
-        <UserButton
-          appearance={{
-            elements: {
-              userButtonAvatarBox: "w-[42px] h-[42px]",
-            },
-          }}
-        />
-      </div>
-      <div className='flex-1 overflow-auto'>
+
+        {/* Nav */}
+        <nav className='flex-1 px-4 py-6 space-y-1'>
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `
+                flex items-center gap-3 px-4 py-2 rounded-lg text-sm
+                transition-all
+                ${
+                  isActive
+                    ? "bg-neutral-900 text-white shadow"
+                    : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900"
+                }
+                `
+              }
+            >
+              <img src={item.icon} className={`w-5 h-5 ${"opacity-80"}`} />
+              <span className='font-medium'>{item.label}</span>
+            </NavLink>
+          ))}
+        </nav>
+
+        {/* User */}
+        <div className='px-6 py-4 border-t flex items-center gap-3'>
+          <UserButton
+            appearance={{
+              elements: {
+                userButtonAvatarBox: "w-9 h-9",
+              },
+            }}
+          />
+          <span className='text-sm text-neutral-600'>Account</span>
+        </div>
+      </aside>
+
+      {/* Content */}
+      <main className='flex-1 overflow-y-auto p-6'>
         <Outlet />
-      </div>
+      </main>
     </div>
   );
 };
