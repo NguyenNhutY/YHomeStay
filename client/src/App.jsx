@@ -27,6 +27,7 @@ import AreasDetail from "./pages/AreaDetail.jsx";
 import MyBooking from "./pages/MyBooking.jsx";
 import { useAppContext } from "./context/AppContext.jsx";
 import AgencyReq from "./components/AgencyReq.jsx";
+
 import Sidebar from "./components/owner/Sidebar.jsx";
 import AddProperty from "./pages/owner/AddProperty";
 import ListProperty from "./pages/owner/ListProperty.jsx";
@@ -34,22 +35,34 @@ import Dashboard from "./pages/owner/Dashboard.jsx";
 
 const App = () => {
   const location = useLocation();
-  const isOwnerPath = location.pathname.includes("owner");
+  const isOwner = location.pathname.startsWith("/owner");
   const { showAgencyReq } = useAppContext();
+
   return (
     <>
-      <Header />
+      {!isOwner && <Header />}
+
       <main className='min-h-screen'>
         <ScrollToTop />
         <Chatbot />
         <BackToTop />
-        {!isOwnerPath && <Header />}
+
         {showAgencyReq && <AgencyReq />}
 
-        {/* đặt ở đây để scroll mỗi lần đổi route */}
         <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/blog' element={<Blog />} />
+          <Route path='/listing' element={<Listing />} />
+          <Route path='/listing/:id' element={<Property />} />
+
           <Route path='/area/:name' element={<AreasDetail />} />
           <Route path='/my-bookings' element={<MyBooking />} />
+
+          <Route path='/gallery' element={<Gallery />} />
+          <Route path='/thank-you' element={<ThankYou />} />
+          <Route path='/privacy' element={<PrivacyPolicy />} />
+          <Route path='/refund-policy' element={<Refund />} />
+          <Route path='/terms' element={<TermService />} />
 
           <Route path='/500' element={<ServerError />} />
           <Route path='/help-center' element={<Support />} />
@@ -57,24 +70,19 @@ const App = () => {
           <Route path='/guest-safety' element={<GuestSafety />} />
           <Route path='/house-rules' element={<HouseRules />} />
           <Route path='/maintenance' element={<Maintenance />} />
-          <Route path='/' element={<Home />} />
-          <Route path='/gallery' element={<Gallery />} />
-          <Route path='listing/:id' element={<Property />} />
-          <Route path='/blog' element={<Blog />} />
-          <Route path='/listing' element={<Listing />} />
-          <Route path='/thank-you' element={<ThankYou />} />
-          <Route path='/privacy' element={<PrivacyPolicy />} />
-          <Route path='/refund-policy' element={<Refund />} />
-          <Route path='/terms' element={<TermService />} />
-          <Route path='*' element={<Error />} />
+
+          {/* OWNER ROUTES */}
           <Route path='/owner' element={<Sidebar />}>
             <Route index element={<Dashboard />} />
             <Route path='/owner/add-property' element={<AddProperty />} />
             <Route path='/owner/list-property' element={<ListProperty />} />
           </Route>
+
+          <Route path='*' element={<Error />} />
         </Routes>
-        {!isOwnerPath && <Footer />}
       </main>
+
+      {!isOwner && <Footer />}
     </>
   );
 };
