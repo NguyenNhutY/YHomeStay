@@ -12,7 +12,7 @@ const clerkWebhooks = async (req, res) => {
     };
 
     // 👉 verify và LẤY event đã xác thực
-    const evt = wh.verify(req.body, headers);
+    const evt = wh.verify(JSON.stringify(req.body), headers);
     const { data, type } = evt;
 
     const userData = {
