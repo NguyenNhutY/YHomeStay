@@ -3,21 +3,26 @@ import cors from "cors";
 import "dotenv/config";
 import connectDB from "./config/mongodb.js";
 import { clerkMiddleware } from "@clerk/express";
+
 import conversationRoutes from "./routes/conversationRoutes.js";
 import clerkWebhooks from "./controllers/clerkWebhooks.js";
+import User from "./models/User.js";
 
 const app = express();
-
 app.use(cors());
 
-// ❗ webhook cần raw body
+/* =========================
+   CLERK WEBHOOK (RAW BODY)
+   ========================= */
 app.post(
   "/api/clerk",
   express.raw({ type: "application/json" }),
   clerkWebhooks
 );
 
-// các route khác mới dùng json
+/* =========================
+   NORMAL API
+   ========================= */
 app.use(express.json());
 app.use(clerkMiddleware());
 
@@ -27,6 +32,14 @@ app.get("/", (req, res) => {
   res.send("API successfully connected");
 });
 
+app.get("/api/debug/users", async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+});
+
+/* =========================
+   START SERVER
+   ========================= */
 const startServer = async () => {
   await connectDB();
 
