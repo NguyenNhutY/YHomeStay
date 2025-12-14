@@ -34,9 +34,7 @@ const Item = ({ property, currency }) => {
 
         {/* PRICE */}
         <p className='mt-1 font-semibold text-gray-900'>
-          {currency}
-          {price.sale.toLocaleString()} <span className='text-gray-400'>|</span>{" "}
-          ${price.rent.toLocaleString()}
+          {currency}${price.rent.toLocaleString()}
           <span className='text-xs text-gray-500'>/night</span>
         </p>
 
