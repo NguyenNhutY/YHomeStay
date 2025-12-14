@@ -1,13 +1,12 @@
-// config/mongodb.js
 import mongoose from "mongoose";
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB connected");
+  } catch (err) {
+    console.error("MongoDB connection error:", err.message);
+    process.exit(1);
+  }
+};
 
-let cached = global.mongoose;
-
-if (!cached) cached = global.mongoose = { conn: null };
-
-export default async function connectDB() {
-  if (cached.conn) return cached.conn;
-  const conn = await mongoose.connect(process.env.MONGO_URI);
-  cached.conn = conn;
-  return conn;
-}
+export default connectDB;
