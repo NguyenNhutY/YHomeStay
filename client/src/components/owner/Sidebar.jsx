@@ -30,9 +30,15 @@ const Sidebar = () => {
   return (
     <div className='flex h-screen bg-neutral-50'>
       {/* Sidebar */}
+<<<<<<< HEAD
       <aside className='w-64 bg-white border-r shadow-sm flex flex-col '>
         {/* Logo */}
         <div className='h-16 flex items-center px-6 border-b bg-secondary'>
+=======
+      <aside className='w-64 bg-white border-r shadow-sm flex flex-col'>
+        {/* Logo */}
+        <div className='h-16 flex items-center px-6 border-b'>
+>>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
           <Link to='/owner'>
             <img src={assets.logoImg} className='h-8' />
           </Link>
@@ -63,11 +69,19 @@ const Sidebar = () => {
         </nav>
 
         {/* User */}
+<<<<<<< HEAD
         <div className='px-6 py-4 border-t flex items-center gap-3 bg-secondary'>
           <UserButton
             appearance={{
               elements: {
                 userButtonAvatarBox: "w-[42px] h-[42px]",
+=======
+        <div className='px-6 py-4 border-t flex items-center gap-3'>
+          <UserButton
+            appearance={{
+              elements: {
+                userButtonAvatarBox: "w-9 h-9",
+>>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
               },
             }}
           />

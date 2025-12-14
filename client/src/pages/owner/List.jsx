@@ -6,7 +6,11 @@ import { dummyProperties } from "../../assets/data";
 /* ===== CONFIG ===== */
 
 const STATUS_STYLE = {
+<<<<<<< HEAD
   Active: "bg-secondary text-white",
+=======
+  Active: "bg-emerald-100 text-emerald-700",
+>>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
   Draft: "bg-gray-100 text-gray-600",
   Booked: "bg-blue-100 text-blue-700",
   Maintenance: "bg-amber-100 text-amber-700",
@@ -85,7 +89,11 @@ const List = () => {
   return (
     <section className='p-6 md:p-10 space-y-6'>
       {/* Header */}
+<<<<<<< HEAD
       <div className=' flex flex-col md:flex-row gap-4 md:items-center md:justify-between'>
+=======
+      <div className='flex flex-col md:flex-row gap-4 md:items-center md:justify-between'>
+>>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
         <div>
           <h1 className='text-3xl font-semibold'>Your Properties</h1>
           <p className='text-sm text-neutral-500 mt-1'>
@@ -137,7 +145,11 @@ const List = () => {
 
           <Link
             to='/owner/add-property'
+<<<<<<< HEAD
             className='bg-secondary text-white hover:bg-secondary-dark px-4 py-2 rounded-xl text-sm'
+=======
+            className='px-4 py-2 rounded-xl bg-neutral-900 text-white text-sm'
+>>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
           >
             + Add
           </Link>
@@ -146,8 +158,13 @@ const List = () => {
 
       {/* Table */}
       <div className='bg-white rounded-2xl border shadow-sm overflow-hidden'>
+<<<<<<< HEAD
         <table className='w-full '>
           <thead className='border-b text-xs text-gray-500 bg-secondary'>
+=======
+        <table className='w-full'>
+          <thead className='border-b text-xs text-gray-500'>
+>>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
             <tr>
               <th className='px-6 py-4 text-left'>Property</th>
               <th className='px-6 py-4'>Price</th>
@@ -192,6 +209,7 @@ const List = () => {
 
                 <td className='px-6 py-4 text-right'>
                   <div className='flex justify-end gap-4 opacity-60 group-hover:opacity-100 transition'>
+<<<<<<< HEAD
                     <label className='relative inline-flex cursor-pointer items-center'>
                       <input
                         type='checkbox'
@@ -202,6 +220,14 @@ const List = () => {
                       <div className='peer h-7 w-12 rounded-full bg-slate-300 ring-offset-1 transition-colors duration-200 peer-checked:bg-secondary peer-focus:ring-2 peer-focus:ring-emerald-400'></div>
                       <span className='dot absolute top-1 left-1 h-5 w-5 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5'></span>
                     </label>
+=======
+                    <button
+                      onClick={() => toggleStatus(item._id)}
+                      className='text-sm hover:text-black'
+                    >
+                      Toggle
+                    </button>
+>>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
                     <Link
                       to={`/owner/${item._id}/edit`}
                       className='text-sm hover:text-black'
@@ -210,8 +236,12 @@ const List = () => {
                     </Link>
                     <button
                       onClick={() => handleDelete(item._id)}
+<<<<<<< HEAD
                       className='text-sm text-red-500 hover:text-red-700 hover:bg-secondary-dark
 '
+=======
+                      className='text-sm text-red-500 hover:text-red-700'
+>>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
                     >
                       Remove
                     </button>
