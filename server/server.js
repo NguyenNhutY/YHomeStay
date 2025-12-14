@@ -13,8 +13,12 @@ app.use(cors());
 
 app.use(express.json());
 app.use(clerkMiddleware());
+app.post(
+  "/api/webhooks/clerk",
+  express.raw({ type: "application/json" }),
+  clerkWebhooks
+);
 
-app.use("/api/clerk", clerkWebhooks);
 app.use("/api/conversations", conversationRoutes);
 
 app.get("/", (req, res) => {
