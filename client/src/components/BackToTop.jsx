@@ -1,7 +1,7 @@
 import { useState, useEffect, memo } from "react";
 import { FaArrowUp } from "react-icons/fa";
 
-function BackToTop() {
+const BackToTop = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function BackToTop() {
       </button>
     )
   );
-}
+};
 
 // export bằng memo
 export default memo(BackToTop);

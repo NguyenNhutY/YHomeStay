@@ -19,7 +19,6 @@ const Home = () => {
       <Areas />
       <WhyChooseUs />
       <FeatureProperties />
-
       <Banner />
       <Testimonial />
       <About />
