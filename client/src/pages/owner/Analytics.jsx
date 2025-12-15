@@ -71,19 +71,11 @@ const Analytics = () => {
           {properties.map((p) => (
             <div
               key={p.name}
-<<<<<<< HEAD
               className='flex justify-between items-center border border-secondary/30 rounded-xl px-4 py-3'
             >
               <div>
                 <p className='font-medium'>{p.name}</p>
                 <p className='text-sm text-secondary/80'>
-=======
-              className='flex justify-between items-center border rounded-xl px-4 py-3'
-            >
-              <div>
-                <p className='font-medium'>{p.name}</p>
-                <p className='text-sm text-gray-500'>
->>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
                   Occupancy: {p.occupancy}%
                 </p>
               </div>
@@ -99,13 +91,9 @@ const Analytics = () => {
 const Card = ({ title, value, highlight }) => (
   <div
     className={`rounded-2xl border p-4 ${
-<<<<<<< HEAD
       highlight
         ? "bg-secondary text-white"
         : "bg-white border border-secondary/30"
-=======
-      highlight ? "bg-black text-white" : "bg-white"
->>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
     }`}
   >
     <p className='text-sm opacity-70'>{title}</p>

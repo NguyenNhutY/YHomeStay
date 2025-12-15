@@ -60,16 +60,10 @@ const Staff = () => {
             Quản lý nhân viên dọn phòng & bảo trì
           </p>
         </div>
-<<<<<<< HEAD
-        <button
-          onClick={() => setShowForm(true)}
-          className='bg-secondary text-white px-4 py-2 rounded-xl hover:bg-secondary/80 transition'
-=======
 
         <button
           onClick={() => setShowForm(true)}
-          className='bg-black text-white px-4 py-2 rounded-xl hover:bg-gray-800 transition'
->>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
+          className='bg-secondary text-white px-4 py-2 rounded-xl hover:bg-secondary/80 transition'
         >
           + Add Staff
         </button>
@@ -98,20 +92,14 @@ const Staff = () => {
                   <span
                     className={`px-3 py-1 rounded-full text-sm ${
                       s.status === "Available"
-<<<<<<< HEAD
                         ? "bg-secondary/20 text-secondary-700"
                         : "bg-secondary/30 text-secondary-900"
-=======
-                        ? "bg-green-100 text-green-700"
-                        : "bg-yellow-100 text-yellow-700"
->>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
                     }`}
                   >
                     {s.status}
                   </span>
                 </td>
                 <td className='px-6 py-4 text-right'>
-<<<<<<< HEAD
                   <label className='relative inline-flex cursor-pointer items-center'>
                     <input
                       type='checkbox'
@@ -122,14 +110,6 @@ const Staff = () => {
                     <div className='peer h-7 w-12 rounded-full bg-slate-300 ring-offset-1 transition-colors duration-200 peer-checked:bg-secondary peer-focus:ring-2 peer-focus:ring-emerald-400'></div>
                     <span className='dot absolute top-1 left-1 h-5 w-5 rounded-full bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5'></span>
                   </label>
-=======
-                  <button
-                    onClick={() => toggleStatus(s.id)}
-                    className='text-sm text-blue-600 hover:text-blue-800'
-                  >
-                    Toggle status
-                  </button>
->>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
                 </td>
               </tr>
             ))}
@@ -171,21 +151,12 @@ const Staff = () => {
 
               <div className='flex justify-end gap-3 pt-4'>
                 <button
-<<<<<<< HEAD
                   type='submit'
                   className='px-4 py-2 rounded-xl bg-secondary text-white'
                 >
                   Save
                 </button>
 
-=======
-                  type='button'
-                  onClick={() => setShowForm(false)}
-                  className='px-4 py-2 rounded-xl border'
-                >
-                  Cancel
-                </button>
->>>>>>> c747ac7f9922acab8b5eb4e9ead87ad1cd7faee1
                 <button
                   type='submit'
                   className='px-4 py-2 rounded-xl bg-black text-white'
