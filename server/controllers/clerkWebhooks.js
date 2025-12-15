@@ -1,12 +1,12 @@
+// controllers/clerkWebhooks.js
 import { Webhook } from "svix";
+import getRawBody from "raw-body";
 import User from "../models/User.js";
 
-const clerkWebhooks = async (req, res) => {
+export const handleClerkWebhook = async (req, res) => {
   try {
+    const rawBody = await getRawBody(req); // đọc raw stream
     const wh = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
-
-    // Clerk gửi raw body, cần convert
-    const payload = req.body.toString();
 
     const headers = {
       "svix-id": req.headers["svix-id"],
@@ -14,7 +14,7 @@ const clerkWebhooks = async (req, res) => {
       "svix-signature": req.headers["svix-signature"],
     };
 
-    const evt = wh.verify(payload, headers);
+    const evt = wh.verify(rawBody, headers);
     const { data, type } = evt;
 
     const userData = {
@@ -25,20 +25,14 @@ const clerkWebhooks = async (req, res) => {
 
     switch (type) {
       case "user.created":
-        await User.create({
-          _id: data.id,
-          ...userData,
-        });
+        await User.create({ _id: data.id, ...userData });
         break;
-
       case "user.updated":
         await User.findByIdAndUpdate(data.id, userData);
         break;
-
       case "user.deleted":
         await User.findByIdAndDelete(data.id);
         break;
-
       default:
         break;
     }
@@ -46,8 +40,6 @@ const clerkWebhooks = async (req, res) => {
     res.status(200).json({ success: true });
   } catch (err) {
     console.error("Clerk webhook error:", err.message);
-    res.status(400).json({ success: false, error: err.message });
+    res.status(400).json({ success: false });
   }
 };
-
-export default clerkWebhooks;

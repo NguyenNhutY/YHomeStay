@@ -1,12 +1,10 @@
+// routes/clerkRoutes.js
 import express from "express";
-import clerkWebhookController from "../controllers/clerkWebhookController.js";
+import { handleClerkWebhook } from "../controllers/clerkWebhooks.js";
 
 const router = express.Router();
 
-router.post(
-  "/",
-  express.raw({ type: "application/json" }),
-  clerkWebhookController
-);
+// ⚠️ chỉ đọc raw body, không parse
+router.post("/", handleClerkWebhook);
 
 export default router;
