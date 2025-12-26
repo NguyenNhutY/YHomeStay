@@ -1,9 +1,9 @@
 import express from "express";
-import { authUser } from "../middleware/authMiddleware.js";
+import { authUser } from "../middlewares/auth.middleware.js";
 import {
   getUserProfile,
   addRecentSearchCity,
-} from "../controllers/userController.js";
+} from "../controllers/user.controller.js";
 
 const router = express.Router();
 

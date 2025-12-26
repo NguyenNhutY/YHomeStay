@@ -1,18 +1,35 @@
-// models/Conversation.js
 import mongoose from "mongoose";
 
-const messageSchema = new mongoose.Schema({
-  from: { type: String, enum: ["guest", "owner"], required: true },
-  text: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now },
-});
+const messageSchema = new mongoose.Schema(
+  {
+    from: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    text: { type: String, required: true },
+  },
+  { timestamps: true }
+);
 
-const conversationSchema = new mongoose.Schema({
-  guest: { type: String, required: true },
-  property: { type: String, required: true },
-  messages: [messageSchema],
-  unread: { type: Boolean, default: true },
-  lastMessage: { type: String },
-});
+const conversationSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    homestay: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Homestay",
+      required: true,
+    },
+    messages: [messageSchema],
+    lastMessage: String,
+    unreadByGuest: { type: Boolean, default: false },
+    unreadByOwner: { type: Boolean, default: true },
+  },
+  { timestamps: true }
+);
 
 export default mongoose.model("Conversation", conversationSchema);
