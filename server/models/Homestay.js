@@ -5,12 +5,13 @@ const homestaySchema = new mongoose.Schema(
   {
     title: String,
     description: String,
-    area: String,
-    staff: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    host: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    address: String,
+    city: String,
+    country: String,
+    pricePerNight: Number,
     images: [String],
     amenities: [String],
-    host: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     status: { type: String, default: "pending" },
   },
   { timestamps: true }

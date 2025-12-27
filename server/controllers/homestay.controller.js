@@ -8,7 +8,7 @@ export const createHomestay = async (req, res) => {
   try {
     const { title, description, area, pricePerNight, maxGuests, amenities } =
       req.body;
-    const host = req.user._id;
+    const host = req.user._id ? req.user.role == "owner" : null;
 
     if (!req.files || req.files.length !== 4) {
       return res
@@ -120,6 +120,91 @@ export const toggleHomestayStatus = async (req, res) => {
 
     await homestay.save();
     res.json(homestay);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+export const getHomestayById = async (req, res) => {
+  try {
+    const homestay = await Homestay.findById(req.params.id).populate(
+      "host",
+      "name email"
+    );
+    if (!homestay) {
+      return res.status(404).json({ message: "Homestay not found" });
+    }
+    res.json(homestay);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+export const registerHomestay = async (req, res) => {
+  try {
+    // Logic to register a hotel
+    const { title, description, area, pricePerNight, maxGuests, amenities } =
+      req.body;
+    const host = req.user._id ? req.user.role == "guest" : null;
+    const hotel = await Hotel.findOne({ host });
+    if (hotel) {
+      return res
+        .status(400)
+        .json({ message: "You have already created a homestay" });
+    }
+    const newHotel = await Hotel.create({
+      title,
+      description,
+      area,
+      pricePerNight,
+      maxGuests,
+      amenities: amenities || [],
+      host,
+      status: "pending",
+    });
+    await User.findByIdAndUpdate(host);
+
+    res.status(201).json(newHotel);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: err.message });
+  }
+};
+
+export const getHomestaylById = async (req, res) => {
+  try {
+    const hotel = await Hotel.findById(req.params.id).populate(
+      "host",
+      "name email"
+    );
+    if (!hotel) {
+      return res.status(404).json({ message: "Hotel not found" });
+    }
+    res.json(hotel);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+export const getHomestayRooms = async (req, res) => {
+  try {
+    const hotel = await Hotel.findById(req.params.id).populate("rooms");
+    if (!hotel) {
+      return res.status(404).json({ message: "Hotel not found" });
+    }
+    res.json(hotel.rooms);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+export const getHomestayRoomDetails = async (req, res) => {
+  try {
+    const room = await Room.findById(req.params.roomId).populate("hotel");
+    if (!room) {
+      return res.status(404).json({ message: "Room not found" });
+    }
+    res.json(room);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

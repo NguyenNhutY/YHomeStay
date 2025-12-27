@@ -1,13 +1,13 @@
 import express from "express";
 import { authUser } from "../middlewares/auth.middleware.js";
 import {
-  getUserProfile,
-  addRecentSearchCity,
+  getUserData,
+  storeRecentSearchedCitites,
 } from "../controllers/user.controller.js";
 
 const router = express.Router();
 
-router.get("/", authUser, getUserProfile);
-router.post("/store-recent-search", authUser, addRecentSearchCity);
+router.get("/", authUser, getUserData);
+router.post("/store-recent-search", authUser, storeRecentSearchedCitites);
 
 export default router;
